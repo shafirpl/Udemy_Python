@@ -25,6 +25,10 @@ class Deck:
 	def __init__(self):
 		suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
 		values = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
+		# this is a list comprehenstion, which is basically running a nested loop
+		# so for each suit it would go for each value 
+		# som something like Hearts A, Hearts 2 etc
+		# We could swap then, then they would go like A Hearts, A Diamonds etc
 		self.cards = [Card(value, suit) for suit in suits for value in values]
 
 	def __repr__(self):
@@ -38,11 +42,15 @@ class Deck:
 		actual = min([count,num])
 		if count == 0:
 			raise ValueError("All cards have been dealt")
+		# https://www.udemy.com/course/the-modern-python3-bootcamp/learn/lecture/8987502#questions
+		# Watch from 10:34
 		cards = self.cards[-actual:]
 		self.cards = self.cards[:-actual]
 		return cards
 
 	def deal_card(self):
+		# https://www.udemy.com/course/the-modern-python3-bootcamp/learn/lecture/8987502#questions
+		# watch from 14:00
 		return self._deal(1)[0]
 
 	def deal_hand(self, hand_size):
